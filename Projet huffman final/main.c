@@ -60,9 +60,10 @@ void part3()
         encodage_avl(fichier,avl);
 
        //print_tree(avl);
-
+        
         //decodage_avl(avl);
-
+        //free_tree(&Arbre);
+        //free_tree(&avl);
     }
     else
     {
@@ -78,9 +79,9 @@ void part3()
 
 int main()
 {
-  //  part1();
-   //part2();
-   part3();
+  //  part1(); // Traduire un texte en binaire
+   //part2(); //Arbre Huffman simple
+   part3(); //Optimisation Arbre Huffman
 
     return 0;
 }
