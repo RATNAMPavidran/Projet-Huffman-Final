@@ -13,7 +13,7 @@ void trad_fichier_ascii(FILE *f)
     {
         do
         {
-            caractereActuel = fgetc(f); // on récupère un caractère du fichier
+            caractereActuel = fgetc(f); // on rÃ©cupÃ¨re un caractÃ¨re du fichier
             traduction=binaire(caractereActuel);  // on traduit en binaire
             if (caractereActuel!=-1) //c'est EOF mais correspond sur certaines machines a -1
                 fputs(traduction,trad);
@@ -53,7 +53,7 @@ char *binaire(char a) //Convertie les lettres en binaire
 
 int nombre_caractere_fich_txt (FILE *f)
 {
-    int nombre=0; // on enleve le NULL ‡ la fin du texte
+    int nombre=0; // on enleve le NULL â€¡ la fin du texte
     char caractereActuel;
     do
     {
@@ -96,7 +96,7 @@ Element* compter_occurrence(FILE *f)
 
         while (lettre != EOF)
         {
-            lettre = fgetc(f);  // on stock le caractère suiv
+            lettre = fgetc(f);  // on stock le caractÃ¨re suiv
 
 
             if (lettre!=EOF)
@@ -105,9 +105,9 @@ Element* compter_occurrence(FILE *f)
                 temp=lsc;
                 if (lettre!=-1)
                 {
-                    while ((temp!=NULL)&&trouve!=1) // Boucle pour chercher le caractère existant
+                    while ((temp!=NULL)&&trouve!=1) // Boucle pour chercher le caractÃ¨re existant
                     {
-                        if (lettre==temp->lettre)   // CAS ou on a déja rencontré le caractère
+                        if (lettre==temp->lettre)   // CAS ou on a dÃ©ja rencontrÃ© le caractÃ¨re
                         {
                             temp->nombre++;
                             trouve=1;
@@ -119,7 +119,7 @@ Element* compter_occurrence(FILE *f)
                     {
                         temp=lsc;
                         Element* nouveau=malloc(sizeof(Element));
-                        while (temp->suivant!=NULL) // arrive jusqu'à la fin pour ajouter le nv caractère à la liste
+                        while (temp->suivant!=NULL) // arrive jusqu'Ã  la fin pour ajouter le nv caractÃ¨re Ã  la liste
                         {
                             temp=temp->suivant;
                         }
@@ -291,7 +291,7 @@ void trie_liste(Element * * liste){
 
                 temp->suivant->nombre = permut_nbr;
                 temp->suivant->lettre = permut_char;
-                boucle = 1;                             //sera = à 1 jusqu'à qu'il n'y a plus de valeur à changer
+                boucle = 1;                             //sera = Ã  1 jusqu'Ã  qu'il n'y a plus de valeur Ã  changer
 
             }
             temp = temp->suivant;
@@ -312,12 +312,12 @@ void Arbre_Huff(Element* l)
 
     while (temp->suivant!=NULL)
     {
-        Noeud *n= malloc(sizeof(struct Noeud));// création noeud pour le poid
-        n->poids=temp->n->poids+temp->suivant->n->poids;// création noeud pour le poid
+        Noeud *n= malloc(sizeof(struct Noeud));// crÃ©ation noeud pour le poid
+        n->poids=temp->n->poids+temp->suivant->n->poids;// crÃ©ation noeud pour le poid
         n->lettre='\0';
         n->gauche=temp->n;
         n->droite=temp->suivant->n;
-        Add_Liste_Noeud(&temp,n);// on ajoute n à la liste de noeud
+        Add_Liste_Noeud(&temp,n);// on ajoute n Ã  la liste de noeud
         temp=temp->suivant->suivant;
 
         if (temp->suivant==NULL)
@@ -354,7 +354,7 @@ void print_tree(Noeud* tree)
 }
 
 
-void creer_code(Noeud *Arbre, char* code, FILE* dico) // Création du dictionnaire à partir d'un arbre donné
+void creer_code(Noeud *Arbre, char* code, FILE* dico) // CrÃ©ation du dictionnaire Ã  partir d'un arbre donnÃ©
 {
     char copie[30];
 
@@ -363,15 +363,15 @@ void creer_code(Noeud *Arbre, char* code, FILE* dico) // Création du dictionnair
         if ((Arbre->droite==NULL)&&(Arbre->gauche==NULL))  //feuille
         {
            printf("%s est la chaine binaire\n",code);
-            fprintf(dico,"%c : %s\n",Arbre->lettre,code); // écrire dans le fichier dico le chemin
+            fprintf(dico,"%c : %s\n",Arbre->lettre,code); // Ã©crire dans le fichier dico le chemin
         }
 
         else
         {
             strcpy(copie,code);          // copie = code
-            strcat(code, "0");           //concaténer les contenus de deux chaînes de caractères
-            creer_code(Arbre->gauche,code,dico);         //On va à gauche = 0
-            strcat(copie, "1");                          // On va à droite = 1
+            strcat(code, "0");           //concatÃ©ner les contenus de deux chaÃ®nes de caractÃ¨res
+            creer_code(Arbre->gauche,code,dico);         //On va Ã  gauche = 0
+            strcat(copie, "1");                          // On va Ã  droite = 1
             creer_code(Arbre->droite,copie,dico);
         }
     }
@@ -387,7 +387,7 @@ void dico_binaire(FILE* dico, char caractere, char* trad,int taille)// traduire 
         rewind(dico);
 
 
-        while ( caractere!=caractereActuel ) //on recherche le caractère dans le dico
+        while ( caractere!=caractereActuel ) //on recherche le caractÃ¨re dans le dico
         {
             caractereActuel = fgetc(dico);
 
@@ -407,7 +407,7 @@ void dico_binaire(FILE* dico, char caractere, char* trad,int taille)// traduire 
     }
 }
 
-void encodage(FILE* dico, FILE* f)// Traduire le fichier f(texte) à partir du fichier dico dans le fichier Traduction_dico(binaire)
+void encodage(FILE* dico, FILE* f)// Traduire le fichier f(texte) Ã  partir du fichier dico dans le fichier Traduction_dico(binaire)
 {
     FILE* trad = fopen("Traduction_dico.txt","w+");
     char caractereActuel;
@@ -423,9 +423,9 @@ void encodage(FILE* dico, FILE* f)// Traduire le fichier f(texte) à partir du fi
            // printf("%c est caractere actuel",caractereActuel);
             if (caractereActuel!=EOF)
             {
-                dico_binaire(dico,caractereActuel,&traduction,taille);  // traduction va contenir le binaire compressé
+                dico_binaire(dico,caractereActuel,&traduction,taille);  // traduction va contenir le binaire compressÃ©
 
-                fputs(traduction,trad); // on écrit dans le fichier Traduction_dico
+                fputs(traduction,trad); // on Ã©crit dans le fichier Traduction_dico
 
             }
 
@@ -576,7 +576,7 @@ Noeud* Arb_Huff_queue(Noeud **tab,int taille)
 }
 
 
-void creer_code_v2(Noeud *Arbre, char* code,Noeud**tab) // Création du dictionnaire à partir d'un arbre donné
+void creer_code_v2(Noeud *Arbre, char* code,Noeud**tab) // CrÃ©ation du dictionnaire Ã  partir d'un arbre donnÃ©
 {
     char copie[30]="";
 
@@ -590,9 +590,9 @@ void creer_code_v2(Noeud *Arbre, char* code,Noeud**tab) // Création du dictionna
         else
         {
             strcpy(copie,code);          // copie = code
-            strcat(code, "0");           //concaténer les contenus de deux chaînes de caractères
-            creer_code_v2(Arbre->gauche,code,(tab));   //On va à gauche = 0
-            strcat(copie, "1");                          // On va à droite = 1
+            strcat(code, "0");           //concatÃ©ner les contenus de deux chaÃ®nes de caractÃ¨res
+            creer_code_v2(Arbre->gauche,code,(tab));   //On va Ã  gauche = 0
+            strcat(copie, "1");                          // On va Ã  droite = 1
             creer_code_v2(Arbre->droite,copie,(tab));
         }
     }
@@ -688,7 +688,7 @@ Noeud** creer_tab_occur(FILE* f,int *taille)
                 int pos=(*taille)/2; // regarde la moitie du tableau
                 if (lettre >= tab[pos]->lettre)
                 {
-                    while ((lettre>tab[pos]->lettre)&&(pos<(*taille)-1)) // Tant que la lettre est plus grande que le carac du tab et tant que l'on ne dépasse pas le tab
+                    while ((lettre>tab[pos]->lettre)&&(pos<(*taille)-1)) // Tant que la lettre est plus grande que le carac du tab et tant que l'on ne dÃ©passe pas le tab
                     {
                         pos++;
                     }
@@ -706,14 +706,14 @@ Noeud** creer_tab_occur(FILE* f,int *taille)
                         }
                         else
                         {
-                            tab=tab_swipe(tab,pos,*taille);// déplacer le tab afin d'insérer au milieu un nouveua noeud
+                            tab=tab_swipe(tab,pos,*taille);// dÃ©placer le tab afin d'insÃ©rer au milieu un nouveua noeud
                         }
                         tab[pos]=creer_noeud(tab[pos],lettre);// creer le noeud
                     }
                 }
                 else
                 {
-                    while ((lettre<tab[pos]->lettre)&&(pos>0))// même conditions que la premiere boucle while mais inverse vu qu'on s'interresse ici à la gauche du tab
+                    while ((lettre<tab[pos]->lettre)&&(pos>0))// mÃªme conditions que la premiere boucle while mais inverse vu qu'on s'interresse ici Ã  la gauche du tab
                     {
                         pos--;
                     }
@@ -729,7 +729,7 @@ Noeud** creer_tab_occur(FILE* f,int *taille)
                         {
                             pos++;
                         }
-                        tab=tab_swipe(tab,pos,*taille);// déplacer le tab afin d'insérer au milieu un nouveua noeud
+                        tab=tab_swipe(tab,pos,*taille);// dÃ©placer le tab afin d'insÃ©rer au milieu un nouveua noeud
                         tab[pos]=creer_noeud(tab[pos],lettre);
                     }
                 }
@@ -742,7 +742,7 @@ Noeud** creer_tab_occur(FILE* f,int *taille)
 }
 
 
-void quick_sort(Noeud*** tab, int debut, int fin)
+void quick_sort(Noeud*** tab, int debut, int fin)//Fonction de tri rapide. Consiste Ã  fixer un pivot, Ã  mettre tous les Ã©lÃ©ments sup Ã  droite sinn a gauche 
 {
    int i;
    int j;
@@ -755,7 +755,7 @@ void quick_sort(Noeud*** tab, int debut, int fin)
         i = debut;
         j = fin;
 
-        //on va faire en sorte que tous les éléments sous le pivot soit < et le reste >
+        //on va faire en sorte que tous les Ã©lÃ©ments sous le pivot soit < et le reste >
         //la plus grande valeur deviendra le pivot
         while (i < j)
         {
@@ -774,7 +774,7 @@ void quick_sort(Noeud*** tab, int debut, int fin)
         }
         temp = (*tab)[pivot];
         (*tab)[pivot] = (*tab)[j];
-        (*tab)[j] = temp; //le pivot a été déplacé
+        (*tab)[j] = temp; //le pivot a Ã©tÃ© dÃ©placÃ©
 
 
         quick_sort(tab, debut,j-1);
@@ -799,7 +799,7 @@ void Afficher_tab(int taille, Noeud**tab)
 
 
 
-L_Noeud * Tab_to_L_Noeud(Noeud ** tab , int nbre_chara_diff )
+L_Noeud * Tab_to_L_Noeud(Noeud ** tab , int nbre_chara_diff )// transformer un tableau de noeud en liste de noeud 
 {
     L_Noeud* list =NULL;
     L_Noeud * temp=NULL;
@@ -900,7 +900,7 @@ void decodage_avl(Noeud*avl)
             if (caractereActuel!=EOF)
             {
 
-                traduction[i] = caractereActuel;
+                traduction[i] = caractereActuel;// Stocke un par un caractere dans une chaine de caractere 
                 i++;
                 traduction[i]='\0';
                 if (chercher_lettre_avl(avl,traduction,&lettre)==1)
